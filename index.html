@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicador de Máscaras de Imagen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>Aplicador de Máscaras</h1>
+        </header>
+
+        <main class="main-content">
+
+            <section class="card">
+                <h2>1. Carga tu imagen</h2>
+                <p>Selecciona una imagen de tu dispositivo. Se aplicará la máscara automáticamente.</p>
+                <input type="file" id="imageLoader" name="imageLoader" accept="image/*" style="display: none;"/>
+                <label for="imageLoader" class="file-upload-label">SELECCIONAR ARCHIVO</label>
+                <img id="userImagePreview" class="image-preview" src="" alt="Vista previa de tu imagen">
+            </section>
+
+            <section class="card hidden" id="editorCard">
+                <h2>2. Edita la imagen</h2>
+                <p>Arrastra para mover y usa el control para cambiar el tamaño.</p>
+                <div class="canvas-container">
+                    <canvas id="editorCanvas"></canvas>
+                </div>
+                <div class="controls">
+                    <div class="control-item">
+                        <label for="zoomSlider">Zoom</label>
+                        <input type="range" id="zoomSlider" min="0.1" max="5" step="0.01" value="1">
+                    </div>
+                    <div class="control-item">
+                            <label for="colorSelector">Color</label>
+                            <select id="colorSelector">
+                                <option value="">Ninguno</option>
+                                <option value="blue">Azul</option>
+                                <option value="red">Rojo</option>
+                            </select>
+                        </div>
+                        <div class="control-item">
+                            <label for="colorSelectorB">Color 2</label>
+                            <select id="colorSelectorB">
+                                <option value="">Ninguno</option>
+                                <option value="blue">Azul</option>
+                                <option value="red">Rojo</option>
+                            </select>
+                        </div>
+                        <div class="control-item">
+                            <label for="alphaSlider">Opacidad Color</label>
+                            <div class="slider-container">
+                                <input type="range" id="alphaSlider" min="0" max="100" step="1" value="10">
+                                <span id="alphaValue">10%</span>
+                            </div>
+                        </div>
+                </div>
+                <button id="applyBtn">GENERAR RESULTADO</button>
+            </section>
+
+            <section class="card hidden" id="resultCard">
+                <h2>3. Resultado</h2>
+                <p>Este es el resultado final. ¡Ya puedes descargarlo!</p>
+                <canvas id="resultCanvas"></canvas>
+                <button id="downloadBtn" disabled>DESCARGAR</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
